@@ -99,9 +99,12 @@ Page({
   //监听滚动 完成右到左的联动
   scroll: function (e) {
     var dis = e.detail.scrollTop
+    console.log("dis[%s]", dis)
     for (let i = 0; i < this.data.scrollArr.length; i++) {
+      //var scrollDis = this.data.scrollArr[i]
+      //console.log("scrollDis[%s]", scrollDis)
       if (i < this.data.scrollArr.length - 1) {
-        if (dis > this.data.scrollArr[i] && dis < this.data.scrollArr[i + 1]) {
+        if (dis >= this.data.scrollArr[i] && dis < this.data.scrollArr[i + 1]) {
           console.log(i)
           this.setData({
             activeIndex: i,
