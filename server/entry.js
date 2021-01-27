@@ -64,19 +64,27 @@ let clients = {};
 
 wss.on('connection', function (ws,req) {
     console.log('client connected');
-
+    console.log("req url[%s]", req.url);
     let user_id=req.url.substr(10);
-    console.log(user_id+"上线");
+    console.log("管理员[%s]上线", user_id);
     clients[user_id]= {
         "user_id":user_id,
         "client":ws
     };
-    console.log(req.url)
+    console.log("clients:", clients);
     ws.on('message', function (message) {
-        console.log(message)
-        console.log(clients.admin)
+        console.log("receive wss msg[%s]", message);
         if(clients.hasOwnProperty('admin')){
-            clients.admin.client.send(message);
+            var cli = clients.admin.client;
+            var msgJson = JSON.parse(message);
+            if(msgJson && msgJson.msg){
+                if(msgJson.msg == "hello"){
+                    msgJson.resp = "world";
+                    cli.send(JSON.stringify(msgJson));
+                }
+            }else{
+                cli.send(message);
+            }
         }else{
             console.log('管理员未上线')
         }

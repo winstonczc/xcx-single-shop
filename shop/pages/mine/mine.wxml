@@ -14,8 +14,8 @@
       </view>
       <view class='down-center' style='height:50%'> 
         <i class="iconfont icon-shouji" style="color:#B6D9A9"></i>
-         <label style='font-size:15px;margin-left:15px' wx:if="{{phone}}">{{phone}}</label> 
-        <button size='mini' wx:if="{{!phone}}"  type='primary' class='bindBtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号,以便接收更多优惠券的信息 </button>
+        <label style='font-size:15px;margin-left:15px' wx:if="{{phone}}">{{phone}}</label> 
+        <button size='mini' wx:if="{{!phone}}"  type='primary' class='bindBtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
       </view>
   </view>
 </view>
