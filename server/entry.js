@@ -56,7 +56,7 @@ for (var f of js_files) {
 
 
 
-//websocket 
+//websocket TODO 目前看没什么用
 
 let wss = new WebSocketServer({ port: 8181 });
 //连接用户
@@ -89,12 +89,11 @@ wss.on('connection', function (ws,req) {
             console.log('管理员未上线')
         }
         ws.on("error", function (code, reason) {
-            console.log(reason);
-            console.log("异常关闭");
+            console.log("管理员[%s]异常关闭, reason[%s]", user_id, reason);
             delete clients[user_id];
         });
         ws.on("close", function (code, reason) {
-            console.log("关闭连接");
+            console.log("管理员[%s]关闭连接", user_id);
             delete clients[user_id];
         });
         
