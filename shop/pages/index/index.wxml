@@ -83,9 +83,8 @@
 
 <!-- 优惠券领取弹窗-->
 <view class="drawer_screen" data-type='1' bindtap="powerDrawer" data-statu="close" wx:if="{{showAdStatus}}"></view>
-<image wx:if="{{showAdStatus}}" class='logor' src='../../images/logor.png'></image>
+<!-- <image wx:if="{{showAdStatus}}" class='logor' src='../../images/logor.png'></image> -->
 <view class="drawer_box_ad" animation="{{animationData}}" style="left:{{adleft}}" wx:if="{{showAdStatus}}">
-
   <view class="drawer_content_ad" wx-if="{{reList[0].isR==0}}">
     <view class='reduction'>
       <view class='money'>
@@ -104,8 +103,7 @@
         </view>
       </view>
       <view class='btn'>
-        <a class="btn-ok" data-reduction='{{reList[0].id}}' bindtap="getCut" wx-if="{{reList[0].isR==0}}">领取</a>
-        <a class="btn-ok" wx-if="{{reList[0].isR==1}}">已领取</a>
+        <a class="btn-ok" data-reduction='{{reList[0].id}}' bindtap="getCut">领取</a>
       </view>
     </view>
   </view>

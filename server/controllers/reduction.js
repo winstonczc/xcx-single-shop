@@ -22,21 +22,32 @@ var client = qn.create({
 
 //获取用户可领取的优惠券列表
 let getUserCanUseReductionList =async(ctx,next)=>{
+    let time_now =moment().format('YYYY-MM-DD HH:mm:ss')
     //获取所有优惠活动
-    let res = await (sequelize.query("select * from `reduction` where status = 1",{
+    let res = await (sequelize.query("select * from `reduction` where status = 1 and endDate > '"+time_now+"'",{
         type: sequelize.QueryTypes.SELECT
     }));
-    //获取用户是否领取过
-    for(let i=0;i<res.length;i++){
-        res[i].endDate=moment(res[i].endDate).format('YYYY-MM-DD');
-        let isR = await (sequelize.query("select * from `mycut` where reduction='"+res[i].id+"' and openid='"+ctx.query.openid+"'",{
+    
+    if(res.length > 0){
+        let resIds = [];
+        for(let i=0;i<res.length;i++){
+            res[i].endDate=moment(res[i].endDate).format('YYYY-MM-DD');
+            resIds[i] = res[i].id;
+            res[i].isR=0
+        }
+        //获取用户是否领取过
+        let myCuts = await (sequelize.query("select * from `mycut` where openid='"+ctx.query.openid+"'",{
             type: sequelize.QueryTypes.SELECT
         }));
-        // 如果已经领过
-        if(isR.length>0){
-            res[i].isR=1
-        }else{
-            res[i].isR=0
+        
+        for(let i=0;i<res.length;i++){
+            for(let j=0;j<myCuts.length;j++){
+                // 如果已经领过
+                if(res[i].id == myCuts[j].reduction){
+                    res[i].isR=1;
+                    break;
+                }
+            }
         }
     }
 

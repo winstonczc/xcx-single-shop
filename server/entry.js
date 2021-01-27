@@ -22,7 +22,6 @@ var js_files = files.filter((f) => {
 });
 
 
-
 for (var f of js_files) {
     console.log(`process controller: ${f}...`);
     let mapping = require(__dirname + '/controllers/' + f);
@@ -54,11 +53,17 @@ for (var f of js_files) {
     }
 }
 
+var httpPort = 7002;
+app.use(json());
+app.use(router.routes());
+app.listen(httpPort);
+console.log('apiServer started at port %s...', httpPort);
 
-
+/*
+var wsPort = 8181;
 //websocket TODO 目前看没什么用
 
-let wss = new WebSocketServer({ port: 8181 });
+let wss = new WebSocketServer({ port: wsPort });
 //连接用户
 let clients = {};
 
@@ -99,10 +104,6 @@ wss.on('connection', function (ws,req) {
         
       
     })
-
 })
-
-app.use(json());
-app.use(router.routes());
-app.listen(7002);
-console.log('apiServer started at port 7002...');
+console.log('apiServer websocket started at port %s...', wsPort);
+*/

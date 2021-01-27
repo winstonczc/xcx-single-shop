@@ -78,7 +78,7 @@ Page({
         var d = new Date();
         var now_h = d.getHours()
         var now_m = d.getMinutes()
-        console.log(now_h)
+        console.log("now hour[%s]", now_h)
         //当处于9:00以前 22:00以后时
         if (now_h < openTime || now_h > closeTime-1) {
           that.setData({
@@ -96,9 +96,8 @@ Page({
           }
         } else {
           //处于营业时间则需提前半小时
-          console.log(now_m)
           now_m = parseInt(now_m / 10) + 3
-          console.log(now_m)
+          console.log("now minute[%s]", now_m)
           if (now_m > 5) {
             now_m = (now_m - 6) * 10
             console.log(now_m)

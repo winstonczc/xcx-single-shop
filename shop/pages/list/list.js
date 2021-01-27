@@ -51,7 +51,7 @@ Page({
   getList() {
     var that = this;
     var sysinfo = wx.getSystemInfoSync().windowHeight;
-    console.log(sysinfo)
+    console.log("windowHeight[%s]", sysinfo)
     wx.showLoading({
     })
     let offsetS = 120
@@ -74,7 +74,7 @@ Page({
         let scrollArr = [0]
         //动态计算联动节点
         for (let i = 0; i < res.data.data.length; i++) {
-          console.log(res.data.data[i].foods.length)
+          console.log("foods count[%s]", res.data.data[i].foods.length)
           scrollArr.push(scrollArr[i] + 73 * res.data.data[i].foods.length + 18)
         }
         that.setData({
@@ -90,7 +90,7 @@ Page({
 
   selectMenu: function (e) {
     var index = e.currentTarget.dataset.index
-    console.log(index)
+    console.log("select menu, index[%s]", index)
     this.setData({
       activeIndex: index,
       toView: 'a' + index,
@@ -99,13 +99,13 @@ Page({
   //监听滚动 完成右到左的联动
   scroll: function (e) {
     var dis = e.detail.scrollTop
-    console.log("dis[%s]", dis)
+    console.log("scroll dis[%s]", dis)
     for (let i = 0; i < this.data.scrollArr.length; i++) {
       //var scrollDis = this.data.scrollArr[i]
       //console.log("scrollDis[%s]", scrollDis)
       if (i < this.data.scrollArr.length - 1) {
         if (dis >= this.data.scrollArr[i] && dis < this.data.scrollArr[i + 1]) {
-          console.log(i)
+          console.log("scroll to index[%s]", i)
           this.setData({
             activeIndex: i,
           })

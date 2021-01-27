@@ -238,14 +238,14 @@ page{
 } 
 .btn {  
   margin: auto;
-  width: 15%;  
+  width: 25%;  
   padding: 20rpx 0;     
   text-align: center;   
   color:white; 
   position: absolute;
   right:0px;
   top:20rpx;
-  opacity: 0;
+  opacity: 1;
   /* border-left: 1px solid white; */
 } 
 .btn-ok{
@@ -264,8 +264,10 @@ page{
 }
 .reduction{
   top: 132rpx;
+  border:1rpx solid #999;
   display: flex;
   width: 95%;
+  background: rgba(255,255,255,0.7);
   background-image: url('http://cdn.handsomebird.xin/ncsf/cut/v1/bg/re1.png');
   background-size: cover;
   position: relative;
@@ -273,14 +275,15 @@ page{
 .money{
   position: absolute;
   text-align: center;
-  width: 15%;
-  font-size: 46rpx;
+  width: 25%;
+  font-size: 60rpx;
   /* border-right: 1px dashed white; */
   padding:48rpx 10rpx;
   /* line-height: 140rpx; */
   margin: auto;
   color: #FF0091;
-  left:42rpx;
+  left:20rpx;
+  font-weight: bold;
 }
 .money span{
   font-size: 26rpx;
@@ -289,21 +292,22 @@ page{
 .content{
   position: absolute;
   padding: 10px;
-  width:55%;
+  width:50%;
   color: #FF0091;
-  left: 186rpx;
+  left: 160rpx;
 }
 .content .desc{
-  font-size: 40rpx;
+  font-size: 35rpx;
   font-weight: bold;
-  color: #FF0091;
 }
 .content .date{
   font-size: 24rpx;
   margin-top: 30rpx;
+  color: #333;
 }
 .content .note{
   font-size: 24rpx;
+  color: #333;
 }
 .logor{
   position: absolute;
