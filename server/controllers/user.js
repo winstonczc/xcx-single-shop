@@ -69,9 +69,14 @@ let getUserOpenId=async(ctx, next) => {
         'js_code='+ctx.query.code+'&grant_type=authorization_code', {
         dataType: 'json',
     });
+    let ui = JSON.parse(userUniInfo);
+    //console.log("ui:", ui);
+    //console.log("session:", ctx.session);
+    ctx.session.sessionKey = ui.session_key;
+    console.log("wx session key[%s]", ctx.session.sessionKey);
     return ctx.response.body={
         "code":0,
-        "msg":JSON.parse(userUniInfo)
+        "msg":ui
     }
 };
 //用户绑定手机号
