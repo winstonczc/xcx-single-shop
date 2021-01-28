@@ -53,13 +53,13 @@ for (var f of js_files) {
     }
 }
 
-var httpPort = 7002;
+var httpPort = 7102;
 app.use(json());
 app.use(router.routes());
 app.listen(httpPort);
 console.log('apiServer started at port %s...', httpPort);
 
-/*
+
 var wsPort = 8181;
 //websocket TODO 目前看没什么用
 
@@ -106,4 +106,4 @@ wss.on('connection', function (ws,req) {
     })
 })
 console.log('apiServer websocket started at port %s...', wsPort);
-*/
+

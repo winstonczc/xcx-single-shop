@@ -97,7 +97,7 @@ App({
   globalData: {
     userInfo: null,
     openId: null,
-    apiHost: "http://127.0.0.1:7002",//电脑本地联调
-    // apiHost: "http://172.20.10.2:7002",//手机预览 电脑手机需同网段
+    apiHost: "http://127.0.0.1:7102",//电脑本地联调
+    // apiHost: "http://172.20.10.2:7102",//手机预览 电脑手机需同网段
   }
 })
